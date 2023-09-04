@@ -1,0 +1,51 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "typescript-boilerplate  ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "npm run lint && rimraf dist/ && tsc",
+    "start": "npm run build && node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.ts",
+    "fix": "eslint --fix src/**/*.ts",
+    "migrate": "drizzle-kit generate:pg"
+  },
+  "author": "Augusto Eduardo Torres",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^18.11.18",
+    "@types/pg": "^8.10.2",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "drizzle-kit": "^0.19.13",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.2",
+    "rimraf": "^4.0.4",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.12.8",
+    "typescript": "5.1.6",
+    "zod-to-json-schema": "^3.21.4"
+  },
+  "dependencies": {
+    "argon2": "^0.31.1",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.28.5",
+    "fastify": "^4.22.2",
+    "fastify-guard": "^2.0.0",
+    "fastify-zod": "^1.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "pino": "^8.14.1",
+    "pino-pretty": "^10.0.1",
+    "postgres": "^3.3.5",
+    "zennv": "^0.1.1",
+    "zod": "^3.21.4"
+  }
+}

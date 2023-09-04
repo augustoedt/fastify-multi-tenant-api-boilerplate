@@ -1,0 +1,5 @@
+{
+    "schema": "./src/db/schemas/*",
+    "out": "./migrations",
+    "breakpoints": false
+}
