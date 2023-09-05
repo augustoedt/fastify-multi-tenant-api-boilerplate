@@ -1,8 +1,8 @@
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { db } from "./db";
 import { env } from "./infra/env";
-import { logger } from "./utils/logger";
-import { buildServer } from "./utils/server";
+import { buildServer } from "./infra/server";
+import { logger } from "./infra/utils/logger";
 async function gracefulShutdown({
   app,
 }: {

@@ -1,10 +1,10 @@
 import fastify from "fastify";
 import guard from "fastify-guard";
-import { logger } from "./logger";
-import { applicationRoutes } from "../modules/applications/routes";
-import { usersRoutes } from "../modules/users/routes";
-import { roleRoutes } from "../modules/roles/routes";
 import jwt from "jsonwebtoken";
+import { applicationRoutes } from "../modules/applications/routes";
+import { roleRoutes } from "../modules/roles/routes";
+import { usersRoutes } from "../modules/users/routes";
+import { logger } from "./utils/logger";
 
 type User = {
   id: string;

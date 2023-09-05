@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken";
 import { SYSTEM_ROLES } from "../../infra/permissions";
-import { logger } from "../../utils/logger";
+import { logger } from "../../infra/utils/logger";
 import { getRoleByName } from "../roles/services";
 import { AssignRoleToUserBody, CreateUserBody, LoginBody } from "./schemas";
 import {
