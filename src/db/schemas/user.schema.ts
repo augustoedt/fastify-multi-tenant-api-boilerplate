@@ -42,10 +42,12 @@ export const usersToRoles = pgTable(
       .notNull(),
   },
   (usersToRoles) => ({
-    pk: primaryKey(
-      usersToRoles.applicationId,
-      usersToRoles.roleId,
-      usersToRoles.userId
-    ),
+    pk: primaryKey({
+      columns: [
+        usersToRoles.applicationId,
+        usersToRoles.roleId,
+        usersToRoles.userId,
+      ],
+    }),
   })
 );
