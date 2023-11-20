@@ -15,6 +15,7 @@ export async function getApplications() {
     .select({
       id: applications.id,
       name: applications.name,
+      createdBy: applications.createdBy,
       createdAt: applications.createdAt,
     })
     .from(applications);

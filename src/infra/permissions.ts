@@ -13,11 +13,37 @@ export const ALL_PERMISSIONS = [
   "data:edit-own",
 ] as const;
 
-export const PERMISSIONS = ALL_PERMISSIONS.reduce((acc, permission) => {
-  acc[permission] = permission;
+export const ALL_USER_PERMISSIONS = {
+  role: "users",
+  read: {
+    users: true,
+    roles: true,
+  },
+  update: {
+    users: true,
+    roles: true,
+  },
+  delete: {
+    users: true,
+    roles: true,
+  },
+  create: {
+    users: true,
+    roles: true,
+  },
+};
 
-  return acc;
-}, {} as Record<(typeof ALL_PERMISSIONS)[number], (typeof ALL_PERMISSIONS)[number]>);
+export const PERMISSIONS = ALL_PERMISSIONS.reduce(
+  (acc, permission) => {
+    acc[permission] = permission;
+
+    return acc;
+  },
+  {} as Record<
+    (typeof ALL_PERMISSIONS)[number],
+    (typeof ALL_PERMISSIONS)[number]
+  >,
+);
 
 export const USER_ROLE_PERMISSIONS = [
   PERMISSIONS["data:write"],

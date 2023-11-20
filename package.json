@@ -7,10 +7,10 @@
     "dev": "nodemon src/index.ts",
     "build": "npm run lint && rimraf dist/ && tsc",
     "start": "npm run build && node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**/*.ts",
     "fix": "eslint --fix src/**/*.ts",
-    "migrate": "drizzle-kit generate:pg"
+    "migrate": "drizzle-kit generate:pg",
+    "dbup": "drizzle-kit push:pg --config=drizzle.config.json"
   },
   "author": "Augusto Eduardo Torres",
   "license": "ISC",

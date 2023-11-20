@@ -4,9 +4,10 @@ import zodToJsonSchema from "zod-to-json-schema";
 // Create user
 const createUserBodySchema = z.object({
   email: z.string().email(),
-  name: z.string(),
-  applicationId: z.string().uuid(),
+  name: z.string().min(2),
   password: z.string().min(6),
+  roleId: z.string().optional(),
+  applicationId: z.string().optional(),
   initialUser: z.boolean().optional(),
 });
 
@@ -20,7 +21,6 @@ export const createUserJsonSchema = {
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string(),
-  applicationId: z.string(),
 });
 
 export type LoginBody = z.infer<typeof loginSchema>;

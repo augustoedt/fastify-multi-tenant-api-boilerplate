@@ -1,5 +1,5 @@
-import { applications } from "./application.schema";
+import { applications, usersToApplications } from "./application.schema";
 import { roles } from "./roles.schema";
 import { users, usersToRoles } from "./user.schema";
 
-export { applications, roles, users, usersToRoles };
+export { applications, roles, users, usersToRoles, usersToApplications };

@@ -8,5 +8,6 @@ export const env = zennv({
     HOST: z.string().default("0.0.0.0"),
     DATABASE_CONNECTION: z.string().optional(),
     ENV: z.string(),
+    SECRET: z.string(),
   }),
 });

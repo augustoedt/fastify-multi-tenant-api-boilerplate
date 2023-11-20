@@ -26,3 +26,20 @@ export async function getRoleByName({
 
   return result[0];
 }
+
+export async function getRolesByApplication({
+  applicationId,
+}: {
+  applicationId: string;
+}) {
+  const result = await db
+    // SELECT *
+    .select()
+    // FROM roles
+    .from(roles)
+    // WHERE applicationId = ?
+    .where(eq(roles.applicationId, applicationId));
+
+  return result;
+}
+

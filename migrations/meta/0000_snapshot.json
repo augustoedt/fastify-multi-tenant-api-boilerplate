@@ -1,9 +1,52 @@
 {
+  "id": "4e56e639-2f49-44d3-8f81-488b96c74460",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
-  "id": "90ce8555-d7e8-4450-8bf2-15405151d295",
-  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "applicationInfo": {
+      "name": "applicationInfo",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "application_id": {
+          "name": "application_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fantasy_name": {
+          "name": "fantasy_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "applicationInfo_application_id_applications_id_fk": {
+          "name": "applicationInfo_application_id_applications_id_fk",
+          "tableFrom": "applicationInfo",
+          "tableTo": "applications",
+          "columnsFrom": [
+            "application_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "applications": {
       "name": "applications",
       "schema": "",
@@ -18,6 +61,12 @@
         "name": {
           "name": "name",
           "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdby": {
+          "name": "createdby",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
@@ -37,7 +86,70 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
+      "foreignKeys": {
+        "applications_createdby_users_id_fk": {
+          "name": "applications_createdby_users_id_fk",
+          "tableFrom": "applications",
+          "tableTo": "users",
+          "columnsFrom": [
+            "createdby"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "usersToApplications": {
+      "name": "usersToApplications",
+      "schema": "",
+      "columns": {
+        "application_id": {
+          "name": "application_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "usersToApplications_application_id_applications_id_fk": {
+          "name": "usersToApplications_application_id_applications_id_fk",
+          "tableFrom": "usersToApplications",
+          "tableTo": "applications",
+          "columnsFrom": [
+            "application_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "usersToApplications_user_id_users_id_fk": {
+          "name": "usersToApplications_user_id_users_id_fk",
+          "tableFrom": "usersToApplications",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
@@ -64,9 +176,27 @@
           "primaryKey": false,
           "notNull": false
         },
-        "permissions": {
-          "name": "permissions",
-          "type": "text[]",
+        "read": {
+          "name": "read",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "delete": {
+          "name": "delete",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "create": {
+          "name": "create",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "update": {
+          "name": "update",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -127,7 +257,7 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": false,
+          "primaryKey": true,
           "notNull": true,
           "default": "gen_random_uuid()"
         },
@@ -142,12 +272,6 @@
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
-        },
-        "applicationId": {
-          "name": "applicationId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
         },
         "password": {
           "name": "password",
@@ -170,39 +294,9 @@
           "default": "now()"
         }
       },
-      "indexes": {
-        "users_id_index": {
-          "name": "users_id_index",
-          "columns": [
-            "id"
-          ],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {
-        "users_applicationId_applications_id_fk": {
-          "name": "users_applicationId_applications_id_fk",
-          "tableFrom": "users",
-          "tableTo": "applications",
-          "columnsFrom": [
-            "applicationId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "users_id_applicationId": {
-          "name": "users_id_applicationId",
-          "columns": [
-            "id",
-            "applicationId"
-          ]
-        }
-      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "usersToRoles": {

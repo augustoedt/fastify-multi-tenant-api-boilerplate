@@ -36,7 +36,7 @@ export async function buildServer() {
       const token = authHeader.replace("Bearer ", "");
       const decoded = jwt.verify(token, "secret") as User;
 
-      console.log("user", decoded);
+      
 
       request.user = decoded;
     } catch (e) {}

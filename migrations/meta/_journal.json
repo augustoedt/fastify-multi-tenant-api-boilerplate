@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1693785508676,
-      "tag": "0000_colossal_orphan",
-      "breakpoints": false
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1693839305493,
-      "tag": "0001_silly_polaris",
-      "breakpoints": false
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1700075328861,
-      "tag": "0002_strange_gertrude_yorkes",
-      "breakpoints": false
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1700109129291,
-      "tag": "0003_puzzling_raza",
+      "when": 1700174797852,
+      "tag": "0000_equal_excalibur",
       "breakpoints": false
     }
   ]

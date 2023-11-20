@@ -7,17 +7,7 @@ interface Authorization {
 }
 
 class AuthorizationModule {
-  constructor(private auth: Authorization | null | undefined) {
-    if (!auth) {
-      this.auth = {
-        role: "",
-        create: {},
-        read: {},
-        update: {},
-        delete: {},
-      };
-    }
-  }
+  constructor(private auth: Authorization) {}
 
   static createRole(role: string) {
     const auth: Authorization = {
@@ -31,7 +21,7 @@ class AuthorizationModule {
     return new AuthorizationModule(auth);
   }
 
-  can(action: keyof Authorization, resource: string) {
+  can(action: keyof Authorization, resource: string): boolean {
     return (this.auth[action] as Record<string, boolean>)[resource];
   }
 
